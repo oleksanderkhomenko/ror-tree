@@ -1,0 +1,32 @@
+= form_for @individual do |f|
+  - if @individual.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@individual.errors.count, "error")
+        prohibited
+        this individual from being saved:
+      %ul
+        - @individual.errors.full_messages.each do |msg|
+          %li= msg
+  %p
+    = f.label :first_name
+    %br/
+    = f.text_field :first_name
+  %p
+    = f.label :last_name
+    %br/
+    = f.text_field :last_name
+  %p
+    = f.label :gender
+    %br/
+    =f.select :gender, [[:male, :male],[:female, :female]]
+  %p
+    = f.label :date_of_birth
+    %br/
+    = f.date_field :date_of_birth
+  %p
+    = f.label :date_of_death
+    %br/
+    = f.date_field :date_of_death
+  %p
+    = f.submit
